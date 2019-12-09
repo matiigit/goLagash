@@ -81,8 +81,12 @@ func main() {
 			auxNumber, err := strconv.Atoi(value)
 
 			if err != nil {
-				fmt.Println("Caracter no valido:", err.Error())
-				os.Exit(1)
+				auxNumber, err = strconv.Atoi((value[:len(value)-1]))
+
+				if err != nil {
+					fmt.Println("Caracter no valido:", err.Error())
+					os.Exit(1)
+				}
 			}
 
 			road[i] = append(road[i], auxNumber)
